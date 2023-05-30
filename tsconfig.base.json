@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@roomex-piotr-workspace/feature-movies": [
+        "libs/feature-movies/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
