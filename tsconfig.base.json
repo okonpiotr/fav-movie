@@ -17,6 +17,9 @@
     "paths": {
       "@roomex-piotr-workspace/feature-movies": [
         "libs/feature-movies/src/index.ts"
+      ],
+      "@roomex-piotr-workspace/feature-movies-repository": [
+        "libs/feature-movies-repository/src/index.ts"
       ]
     }
   },
