@@ -1,24 +1,41 @@
-# Composer files
-composer.phar
-vendor/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Local configs
-config/autoload/*.local.php
+# compiled output
+dist
+tmp
+/out-tsc
 
-# Binary gettext files
-*.mo
+# dependencies
+node_modules
 
-# Data
-data/logs/
-data/cache/
-data/sessions/
-data/tmp/
-temp/
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-#Doctrine 2
-data/DoctrineORMModule/Proxy/
-data/DoctrineORMModule/cache/
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Legacy ZF1
-demos/
-extras/documentation
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.angular
