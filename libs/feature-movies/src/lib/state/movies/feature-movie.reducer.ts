@@ -2,11 +2,11 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as FeatureMovieActions from './feature-movie.actions';
-import { FeatureMovieEntity } from './feature-movie.models';
+import { IMDBMovie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 export const FEATURE_MOVIE_FEATURE_KEY = 'featureMovie';
 
-export interface FeatureMovieState extends EntityState<FeatureMovieEntity> {
+export interface FeatureMovieState extends EntityState<IMDBMovie> {
   selectedId?: string | number; // which FeatureMovie record has been selected
   loaded: boolean; // has the FeatureMovie list been loaded
   error?: string | null; // last known error (if any)
@@ -16,8 +16,9 @@ export interface FeatureMoviePartialState {
   readonly [FEATURE_MOVIE_FEATURE_KEY]: FeatureMovieState;
 }
 
-export const featureMovieAdapter: EntityAdapter<FeatureMovieEntity> =
-  createEntityAdapter<FeatureMovieEntity>();
+export const featureMovieAdapter: EntityAdapter<IMDBMovie> =
+  createEntityAdapter<IMDBMovie
+>();
 
 export const initialFeatureMovieState: FeatureMovieState =
   featureMovieAdapter.getInitialState({
@@ -32,10 +33,10 @@ export const movieReducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(FeatureMovieActions.loadFeatureMovieSuccess, (state, { featureMovie }) =>
+  on(FeatureMovieActions.loadMoviesSuccess, (state, { featureMovie }) =>
     featureMovieAdapter.setAll(featureMovie, { ...state, loaded: true })
   ),
-  on(FeatureMovieActions.loadFeatureMovieFailure, (state, { error }) => ({
+  on(FeatureMovieActions.loadMoviesFailure, (state, { error }) => ({
     ...state,
     error,
   }))

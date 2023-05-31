@@ -12,6 +12,7 @@ import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
 import { AutoComplete } from "primeng/autocomplete";
 import { Observable, of } from "rxjs";
+import { MoviesFacadeService } from "../../service/movies-facade.service";
 
 @Component({
   selector: 'movie-app-movie-form',
@@ -32,9 +33,13 @@ export class MovieFormComponent implements OnInit, AfterViewInit {
     });
 
   countryFormControl = this.formGroup.get('country') as FormControl;
+  favouriteMovie = this.formGroup.get('favouriteMovie') as FormControl;
 
   // movieSuggestion$: Observable<any[] | null> = of(['a','aaaaaa', 'aaaaaaa']);
 
+  constructor(private moviesFacadeService: MoviesFacadeService) {
+
+  }
   ngOnInit(): void {
   }
 
@@ -44,6 +49,11 @@ export class MovieFormComponent implements OnInit, AfterViewInit {
 
 
   onSubmit(): void {
+
+  }
+
+  searchMovieTitle(): void {
+    this.moviesFacadeService.loadData(this.favouriteMovie.value);
 
   }
 

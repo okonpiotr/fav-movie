@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 
 import * as FeatureMovieActions from './feature-movie.actions';
-import { FeatureMovieEntity } from './feature-movie.models';
 import {
   FeatureMovieState,
   initialFeatureMovieState,
@@ -23,7 +22,7 @@ describe('FeatureMovie Reducer', () => {
         createFeatureMovieEntity('PRODUCT-AAA'),
         createFeatureMovieEntity('PRODUCT-zzz'),
       ];
-      const action = FeatureMovieActions.loadFeatureMovieSuccess({
+      const action = FeatureMovieActions.loadMoviesSuccess({
         featureMovie,
       });
 

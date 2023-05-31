@@ -1,14 +1,16 @@
 import { createAction, props } from '@ngrx/store';
-import { FeatureMovieEntity } from './feature-movie.models';
+import { IMDBMovie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 export const initFeatureMovie = createAction('[FeatureMovie Page] Init');
 
-export const loadFeatureMovieSuccess = createAction(
+export const loadMoviesSuccess = createAction(
   '[FeatureMovie/API] Load FeatureMovie Success',
-  props<{ featureMovie: FeatureMovieEntity[] }>()
+  props<{ featureMovie: IMDBMovie[] }>()
 );
 
-export const loadFeatureMovieFailure = createAction(
+export const loadMoviesFailure = createAction(
   '[FeatureMovie/API] Load FeatureMovie Failure',
   props<{ error: any }>()
 );
+
+export const loadMovies = createAction('[FeatureMovie/API] Load Movies Action', props<{ payload: any }>());

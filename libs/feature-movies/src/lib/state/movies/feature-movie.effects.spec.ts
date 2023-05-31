@@ -30,7 +30,7 @@ describe('FeatureMovieEffects', () => {
       actions = hot('-a-|', { a: FeatureMovieActions.initFeatureMovie() });
 
       const expected = hot('-a-|', {
-        a: FeatureMovieActions.loadFeatureMovieSuccess({ featureMovie: [] }),
+        a: FeatureMovieActions.loadMoviesSuccess({ featureMovie: [] }),
       });
 
       expect(effects.init$).toBeObservable(expected);
