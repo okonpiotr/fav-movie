@@ -1,11 +1,15 @@
-
 Please select your favourite movie!
 
 <pre>{{formGroup.value | json}}</pre>
+<pre>valid: {{formGroup.valid | json}}</pre>
 
-<form [formGroup]="formGroup">
-name: <input formControlName ="name"/>
-name: <input formControlName ="username"/>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  name: <input formControlName="name"/> <sc-form-error-display [control]="formGroup.controls['name']"></sc-form-error-display>
+  username: <input formControlName="username"/>  <sc-form-error-display [control]="formGroup.controls['username']"></sc-form-error-display>
+  country: <input formControlName="country"/>  <sc-form-error-display [control]="formGroup.controls['country']"></sc-form-error-display>
+  post code: <input formControlName="postCode"/>  <sc-form-error-display [control]="formGroup.controls['postCode']"></sc-form-error-display>
+  favouriteMovie: <input formControlName="favouriteMovie"/>  <sc-form-error-display [control]="formGroup.controls['favouriteMovie']"></sc-form-error-display>
 
 
+  <button type="submit">Submit</button>
 </form>

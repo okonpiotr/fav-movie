@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'roomex-piotr-workspace-thank-you',
+  selector: 'movie-app-thank-you',
   templateUrl: './thank-you.component.html',
   styleUrls: ['./thank-you.component.scss'],
 })

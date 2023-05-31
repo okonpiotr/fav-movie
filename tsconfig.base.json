@@ -20,6 +20,12 @@
       ],
       "@roomex-piotr-workspace/feature-movies-repository": [
         "libs/feature-movies-repository/src/index.ts"
+      ],
+      "@roomex-piotr-workspace/feature-shared-components": [
+        "libs/feature-shared-components/src/index.ts"
+      ],
+      "@roomex-piotr-workspace/feature-shared-utils": [
+        "libs/feature-shared-utils/src/index.ts"
       ]
     }
   },
