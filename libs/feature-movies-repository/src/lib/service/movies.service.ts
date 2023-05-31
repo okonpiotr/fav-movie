@@ -16,7 +16,7 @@ export class MoviesService {
     httpParams = httpParams.set('apikey', this.envService.movieListApiKey);
     httpParams = httpParams.set('s', partOfMovieName);
     return this.http.get<IMDBResponse>(this.envService.moviesListApiUrl, { params: httpParams }).pipe(
-      map(result => result.Search)
+      map(result => result?.Search ?? [])
     );
 
   }

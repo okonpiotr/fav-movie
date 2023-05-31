@@ -1,13 +1,11 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormErrorDisplayComponent } from './components/form-error-display/form-error-display.component';
+import { ErrorToMessagePipe } from './components/form-error-display/pipe/error-to-message.pipe';
 
-//todo: complete the component
 @NgModule({
   imports: [CommonModule],
-  declarations: [FormErrorDisplayComponent],
-  exports: [
-    FormErrorDisplayComponent
-  ]
+  declarations: [FormErrorDisplayComponent, ErrorToMessagePipe],
+  exports: [FormErrorDisplayComponent],
 })
-export class FeatureSharedComponentsModule  {}
+export class FeatureSharedComponentsModule {}

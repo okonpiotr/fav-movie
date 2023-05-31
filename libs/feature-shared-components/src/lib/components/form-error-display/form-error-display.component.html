@@ -1,2 +1,1 @@
-<pre>{{firstErrorCode$| async | json}}</pre>
-<span *ngIf="control && control.errors"> <pre>{{control.errors[0]}}</pre></span>
+<span *ngIf="firstErrorCode$ | async as firstError">{{firstError| errorToMessage : errorsTab}}</span>

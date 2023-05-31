@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { EMPTY, Observable } from "rxjs";
-import { loadMovies } from "@roomex-piotr-workspace/feature-movies";
+import { select, Store } from "@ngrx/store";
+import { map, Observable } from "rxjs";
+import { AppState, loadMovies, selectMovieList } from "@roomex-piotr-workspace/feature-movies";
 
 //todo- change
-import { AppState } from "../../../../../libs/feature-movies/src/lib/state/app-state";
+import { IMDBMovie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 //todo not for root
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MoviesFacadeService {
+  movieSuggestions$: Observable<string[]> = this.movieStore.pipe(
+    select(selectMovieList),
+    map( (result: IMDBMovie[]) => result?.map(singleMovie => singleMovie.Title) ?? [] )
+  );
 
   constructor(private movieStore: Store<AppState>) { }
 
-  loadData(data: any) {
-    this.movieStore.dispatch( loadMovies());
+  loadData(partOfMovieName: string) {
+    this.movieStore.dispatch( loadMovies( {payload: partOfMovieName}));
   }
 
-  getData(): Observable<any> {
-//    return this.store.select(getData);
-
-    return EMPTY;
-  }
 
 }

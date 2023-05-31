@@ -18,6 +18,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { MovieEffects } from "../../../../libs/feature-movies/src/lib/state/movies/effect";
 import { MovieReducer } from "@roomex-piotr-workspace/feature-movies";
 import { HttpClientModule } from "@angular/common/http";
+import { MoviesFacadeService } from "./service/movies-facade.service";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
@@ -34,15 +35,16 @@ import { HttpClientModule } from "@angular/common/http";
     AutoCompleteModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+
     EffectsModule.forRoot([MovieEffects]),
     StoreModule.forRoot(
       {
-        featureUser: MovieReducer,
+        featureMovie: MovieReducer,
       })
 
 
   ],
-  providers: [],
+  providers: [MoviesFacadeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

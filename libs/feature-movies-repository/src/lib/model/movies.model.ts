@@ -12,11 +12,11 @@ export interface UserMovies {
 }
 
 export interface IMDBMovie {
-  "Title": string,
-  "Year": string,
-  "imdbID": string,
-  "Type": string,
-  "Poster": string
+  Title: string,
+  Year: string,
+  imdbID: string,
+  Type: string,
+  Poster: string
 }
 
 export interface IMDBResponse {

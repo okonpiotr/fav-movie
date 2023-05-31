@@ -11,7 +11,7 @@ import { MovieEffects } from "./state/movies/effect";
     EffectsModule.forRoot([MovieEffects]),
     StoreModule.forRoot(
       {
-        featureUser: MovieReducer,
+        featureMovie: MovieReducer,
       })
 
   ],

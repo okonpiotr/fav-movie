@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -10,8 +10,6 @@ import {
 import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
-import { AutoComplete } from "primeng/autocomplete";
-import { Observable, of } from "rxjs";
 import { MoviesFacadeService } from "../../service/movies-facade.service";
 
 @Component({
@@ -19,15 +17,13 @@ import { MoviesFacadeService } from "../../service/movies-facade.service";
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.scss'],
 })
-export class MovieFormComponent implements OnInit, AfterViewInit {
-  @ViewChild('favouriteMovie') favouriteMovieControl?: AutoComplete;
-
+export class MovieFormComponent {
   countriesOptions: SelectItem[] = enumToArray(Country);
   formGroup = new FormGroup(
     {
       name: new FormControl('', [Validators.required, lettersOnlyValidator()]),
       username: new FormControl('', [Validators.email]),
-      country: new FormControl('',[Validators.required] ),
+      country: new FormControl(this.countriesOptions[0].value,[Validators.required] ),
       postCode: new FormControl('', [this.postalCodeValidator()]),
       favouriteMovie: new FormControl(''),
     });
@@ -35,26 +31,19 @@ export class MovieFormComponent implements OnInit, AfterViewInit {
   countryFormControl = this.formGroup.get('country') as FormControl;
   favouriteMovie = this.formGroup.get('favouriteMovie') as FormControl;
 
-  // movieSuggestion$: Observable<any[] | null> = of(['a','aaaaaa', 'aaaaaaa']);
+  movieSuggestion$ = this.moviesFacadeService.movieSuggestions$;
 
   constructor(private moviesFacadeService: MoviesFacadeService) {
 
   }
-  ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-
-  }
-
 
   onSubmit(): void {
+
 
   }
 
   searchMovieTitle(): void {
     this.moviesFacadeService.loadData(this.favouriteMovie.value);
-
   }
 
 
@@ -77,10 +66,6 @@ export class MovieFormComponent implements OnInit, AfterViewInit {
       return null;
     };
   }
-
-
-
-
 }
 
 function isIrelandPostalCodeCorrect(postalCode: string): boolean {

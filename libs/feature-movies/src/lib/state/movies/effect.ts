@@ -10,8 +10,8 @@ export class MovieEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadMovies),
-      mergeMap(() =>
-        this.movieService.getMoviesList('a').pipe(
+      mergeMap((action) =>
+        this.movieService.getMoviesList(action.payload).pipe(
           map((movies) => loadMoviesSuccess({ movies })),
           catchError((error) => of(loadMoviesFailure({ error })))
         )
