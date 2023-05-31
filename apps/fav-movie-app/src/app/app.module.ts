@@ -8,6 +8,11 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { FeatureSharedComponentsModule } from "@roomex-piotr-workspace/feature-shared-components";
+import { ButtonModule } from "primeng/button";
+import { InputTextModule } from "primeng/inputtext";
+import { DropdownModule } from "primeng/dropdown";
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
@@ -17,6 +22,11 @@ import { FeatureSharedComponentsModule } from "@roomex-piotr-workspace/feature-s
     ReactiveFormsModule,
     BrowserModule,
     FeatureSharedComponentsModule,
+    ButtonModule,
+    InputTextModule,
+    DropdownModule,
+    AutoCompleteModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
   ],
   providers: [],

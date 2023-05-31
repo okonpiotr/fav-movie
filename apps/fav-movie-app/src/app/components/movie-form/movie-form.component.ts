@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
-  Form,
   FormControl,
   FormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators
 } from "@angular/forms";
-import { lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
+import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
+import { SelectItem } from "primeng/api";
+import { AutoComplete } from "primeng/autocomplete";
 
 @Component({
   selector: 'movie-app-movie-form',
@@ -17,6 +18,9 @@ import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
   styleUrls: ['./movie-form.component.scss'],
 })
 export class MovieFormComponent implements OnInit {
+  @ViewChild('favouriteMovie') favouriteMovieControl?: AutoComplete;
+
+  countriesOptions: SelectItem[] = enumToArray(Country);
   formGroup = new FormGroup(
     {
       name: new FormControl('', [Validators.required, lettersOnlyValidator()]),
@@ -65,6 +69,6 @@ function isIrelandPostalCodeCorrect(postalCode: string): boolean {
 }
 
 function isUKPostalCodeCorrect(postalCode: string): boolean {
-  const UKPostalRegex = /"^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$"/; // Regular expression to match only letters
+  const UKPostalRegex = /^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$/; // Regular expression to match only letters
   return UKPostalRegex.test(postalCode);
 }

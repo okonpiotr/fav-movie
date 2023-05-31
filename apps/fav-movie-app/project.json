@@ -19,7 +19,10 @@
           "apps/fav-movie-app/src/favicon.ico",
           "apps/fav-movie-app/src/assets"
         ],
-        "styles": ["apps/fav-movie-app/src/styles.scss"],
+        "styles": [
+          "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "apps/fav-movie-app/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
