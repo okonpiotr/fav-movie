@@ -2,17 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromFeatureMovie from './state/movies/feature-movie.reducer';
-import { FeatureMovieEffects } from './state/movies/feature-movie.effects';
+import { MovieReducer } from "./state/movies/reducer";
+import { MovieEffects } from "./state/movies/effect";
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature(
-      fromFeatureMovie.FEATURE_MOVIE_FEATURE_KEY,
-      fromFeatureMovie.featureMovieReducer
-    ),
-    EffectsModule.forFeature([FeatureMovieEffects]),
+    EffectsModule.forRoot([MovieEffects]),
+    StoreModule.forRoot(
+      {
+        featureUser: MovieReducer,
+      })
+
   ],
 })
 export class FeatureMoviesModule {}

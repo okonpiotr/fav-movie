@@ -14,13 +14,17 @@ import { DropdownModule } from "primeng/dropdown";
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from "@ngrx/store";
-import { movieReducer } from "@roomex-piotr-workspace/feature-movies";
+import { EffectsModule } from "@ngrx/effects";
+import { MovieEffects } from "../../../../libs/feature-movies/src/lib/state/movies/effect";
+import { MovieReducer } from "@roomex-piotr-workspace/feature-movies";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserModule,
     FeatureSharedComponentsModule,
@@ -30,10 +34,13 @@ import { movieReducer } from "@roomex-piotr-workspace/feature-movies";
     AutoCompleteModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    EffectsModule.forRoot([MovieEffects]),
     StoreModule.forRoot(
       {
-        featureMovies: movieReducer,
+        featureUser: MovieReducer,
       })
+
+
   ],
   providers: [],
   bootstrap: [AppComponent],

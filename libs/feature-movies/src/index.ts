@@ -1,4 +1,4 @@
-export * from './lib/state/movies/feature-movie.selectors';
-export * from './lib/state/movies/feature-movie.reducer';
-export * from './lib/state/movies/feature-movie.actions';
+export * from './lib/state/movies/selector';
+export * from './lib/state/movies/reducer';
+export * from './lib/state/movies/action';
 export * from './lib/feature-movies.module';

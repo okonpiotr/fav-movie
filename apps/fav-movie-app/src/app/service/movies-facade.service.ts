@@ -3,16 +3,19 @@ import { Store } from "@ngrx/store";
 import { EMPTY, Observable } from "rxjs";
 import { loadMovies } from "@roomex-piotr-workspace/feature-movies";
 
+//todo- change
+import { AppState } from "../../../../../libs/feature-movies/src/lib/state/app-state";
+
 //todo not for root
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesFacadeService {
 
-  constructor(private store: Store<any>) { }
+  constructor(private movieStore: Store<AppState>) { }
 
   loadData(data: any) {
-    this.store.dispatch( loadMovies(data));
+    this.movieStore.dispatch( loadMovies());
   }
 
   getData(): Observable<any> {
