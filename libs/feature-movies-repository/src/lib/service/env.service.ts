@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import envSettings from './env.json';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ import { Injectable } from '@angular/core';
   would come from cloud settings and be filled during terraform process
  */
 export class EnvService {
-  movieListApiKey = 'secret'
-  moviesListApiUrl = 'https://www.omdbapi.com/?apikey=&type=movie';
+  movieListApiKey = envSettings.movieListApiKey;
+  moviesListApiUrl = envSettings.moviesListApiUrl;
 
   constructor() { }
 }
