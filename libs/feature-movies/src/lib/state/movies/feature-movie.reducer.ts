@@ -25,7 +25,7 @@ export const initialFeatureMovieState: FeatureMovieState =
     loaded: false,
   });
 
-const reducer = createReducer(
+export const movieReducer = createReducer(
   initialFeatureMovieState,
   on(FeatureMovieActions.initFeatureMovie, (state) => ({
     ...state,
@@ -45,5 +45,5 @@ export function featureMovieReducer(
   state: FeatureMovieState | undefined,
   action: Action
 ) {
-  return reducer(state, action);
+  return movieReducer(state, action);
 }

@@ -13,6 +13,8 @@ import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { StoreModule } from "@ngrx/store";
+import { movieReducer } from "@roomex-piotr-workspace/feature-movies";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
@@ -28,6 +30,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AutoCompleteModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    StoreModule.forRoot(
+      {
+        featureMovies: movieReducer,
+      })
   ],
   providers: [],
   bootstrap: [AppComponent],

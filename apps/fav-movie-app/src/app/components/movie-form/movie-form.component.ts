@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -11,13 +11,14 @@ import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/featu
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
 import { AutoComplete } from "primeng/autocomplete";
+import { Observable, of } from "rxjs";
 
 @Component({
   selector: 'movie-app-movie-form',
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.scss'],
 })
-export class MovieFormComponent implements OnInit {
+export class MovieFormComponent implements OnInit, AfterViewInit {
   @ViewChild('favouriteMovie') favouriteMovieControl?: AutoComplete;
 
   countriesOptions: SelectItem[] = enumToArray(Country);
@@ -32,8 +33,15 @@ export class MovieFormComponent implements OnInit {
 
   countryFormControl = this.formGroup.get('country') as FormControl;
 
+  // movieSuggestion$: Observable<any[] | null> = of(['a','aaaaaa', 'aaaaaaa']);
+
   ngOnInit(): void {
   }
+
+  ngAfterViewInit(): void {
+
+  }
+
 
   onSubmit(): void {
 
@@ -44,7 +52,7 @@ export class MovieFormComponent implements OnInit {
     return (control: AbstractControl): ValidationErrors | null => {
       const postalCode = control.value.value;
       if (this.countryFormControl?.value === Country.Ireland) {
-        if (!postalCode.trim()) {
+        if (!postalCode?.trim()) {
           return null;
         } else if (!isIrelandPostalCodeCorrect(postalCode)) {
           return {incorrectPostalCode: true};
@@ -59,6 +67,7 @@ export class MovieFormComponent implements OnInit {
       return null;
     };
   }
+
 
 
 
