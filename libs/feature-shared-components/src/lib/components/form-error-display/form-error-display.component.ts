@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from "@angular/forms";
-import { EMPTY, Observable, of, switchMap } from "rxjs";
+import { EMPTY, Observable, of, startWith, switchMap } from "rxjs";
 
 export type ErrorDictionary = { [error: string] :string  }
 
@@ -29,6 +29,7 @@ export class FormErrorDisplayComponent {
       return of(null);
     }
     return this.control.statusChanges.pipe(
+        startWith(''),
         switchMap(() => {
           return of(firstError(this.control))
         })
@@ -37,7 +38,7 @@ export class FormErrorDisplayComponent {
 }
 
 function firstError(control?: FormControl): string | undefined {
-  if (!control?.errors) {
+  if (!control?.errors || !control.dirty) {
     return undefined;
   }
   const errors = control?.errors as Object;
