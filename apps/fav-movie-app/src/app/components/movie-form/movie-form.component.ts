@@ -34,10 +34,10 @@ export class MovieFormComponent implements OnInit{
   constructor(private moviesFacadeService: MoviesFacadeService, private router: Router) {}
 
   ngOnInit(): void {
-    this.countryFormControl.valueChanges.subscribe(()=> {
-      this.postCodeFormControl.updateValueAndValidity({emitEvent: true, onlySelf: false})
-      this.postCodeFormControl.markAsDirty();
-    });
+    // this.countryFormControl.valueChanges.subscribe(()=> {
+    //   this.postCodeFormControl.updateValueAndValidity({emitEvent: true, onlySelf: false})
+    //   this.postCodeFormControl.markAsDirty();
+    // });
   }
 
   onSubmit(): void {

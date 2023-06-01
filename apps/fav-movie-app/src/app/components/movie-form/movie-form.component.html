@@ -1,9 +1,43 @@
-Please select your favourite movie!
+<h1>Please Select Your Favourite Movie</h1>
+
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  name: <input pInputText formControlName="name"/> <sc-form-error-display [control]="nameFormControl"></sc-form-error-display>
-  username: <input pInputText formControlName="username"/>  <sc-form-error-display [control]="usernameFormControl"></sc-form-error-display>
-  country: <p-dropdown [options]="countriesOptions"  formControlName="country"></p-dropdown> <sc-form-error-display [control]="countryFormControl"></sc-form-error-display>
-  post code: <input pInputText formControlName="postCode"/>  <sc-form-error-display [control]="postCodeFormControl"></sc-form-error-display>
-  favouriteMovie: <p-autoComplete [suggestions]="(movieSuggestion$|async) ?? []" #favouriteMovie  (completeMethod)="searchMovieTitle()" formControlName="favouriteMovie"></p-autoComplete> <sc-form-error-display [control]="formGroup.controls['favouriteMovie']"></sc-form-error-display>
-  <p-button type="submit" icon="pi pi-check" label="Submit"></p-button>
+
+  <div class="form-item-container">
+    <label for="name">Name</label>
+    <input pInputText id="name" formControlName="name"/>
+    <sc-form-error-display [control]="nameFormControl"></sc-form-error-display>
+  </div>
+
+  <div class="form-item-container">
+
+    <label for="username">Username</label>
+    <input id="username" pInputText formControlName="username"/>
+    <sc-form-error-display [control]="usernameFormControl"></sc-form-error-display>
+  </div>
+
+  <div class="form-item-container">
+    <label for="country">Country</label>
+    <p-dropdown id="country" [options]="countriesOptions" formControlName="country"></p-dropdown>
+    <sc-form-error-display [control]="countryFormControl"></sc-form-error-display>
+  </div>
+
+  <div class="form-item-container">
+    <label for="post-code">Post code</label>
+    <input id="post-code" pInputText formControlName="postCode"/>
+    <sc-form-error-display [control]="postCodeFormControl"></sc-form-error-display>
+  </div>
+
+  <div class="form-item-container">
+    <label for="favourite-movie">Favourite movie</label>
+    <p-autoComplete id="favourite-movie" [suggestions]="(movieSuggestion$|async) ?? []" #favouriteMovie
+                    (completeMethod)="searchMovieTitle()"
+                    formControlName="favouriteMovie"></p-autoComplete>
+    <sc-form-error-display [control]="formGroup.controls['favouriteMovie']"></sc-form-error-display>
+  </div>
+
+  <div class="submit-container">
+    <p-button type="submit" icon="pi pi-check" iconPos="right" label="Submit"></p-button>
+  </div>
 </form>
+
+

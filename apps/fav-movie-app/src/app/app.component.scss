@@ -1,0 +1,34 @@
+$placeholder-gradient:  linear-gradient(to right, rgba(0, 170, 168, 1), rgba(0, 103, 121, 1));
+$placeholder-color: #fff;
+$placeholder-font-size: 24px;
+$header-height: 150px;
+
+header {
+  height: 150px;
+  color: $placeholder-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $placeholder-gradient;
+  font-size: $placeholder-font-size;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - $header-height - 30px);
+
+  #menu-container{
+    color: $placeholder-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    background: $placeholder-gradient;
+    font-size: $placeholder-font-size;
+  }
+
+  #content-container{
+    padding: 32px;
+  }
+}
