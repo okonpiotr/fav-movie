@@ -1,9 +1,9 @@
 import { createReducer, on } from "@ngrx/store";
 import { addMovie, loadMoviesSuccess, replaceMovies } from "./action";
-import { IMDBMovie } from "@roomex-piotr-workspace/feature-movies-repository";
+import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 export interface MovieState {
-  movies: IMDBMovie[];
+  movies: Movie[];
 }
 
 

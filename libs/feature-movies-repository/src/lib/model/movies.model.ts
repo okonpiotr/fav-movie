@@ -11,6 +11,13 @@ export interface UserMovies {
   favouriteMovie: string,
 }
 
+
+
+export interface Movie {
+  title: string,
+}
+
+// Model Only For API
 export interface IMDBMovie {
   Title: string,
   Year: string,

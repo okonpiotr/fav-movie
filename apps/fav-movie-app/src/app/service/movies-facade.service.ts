@@ -4,14 +4,14 @@ import { map, Observable } from "rxjs";
 import { AppState, loadMovies, selectMovieList } from "@roomex-piotr-workspace/feature-movies";
 
 //todo- change
-import { IMDBMovie } from "@roomex-piotr-workspace/feature-movies-repository";
+import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 //todo not for root
 @Injectable()
 export class MoviesFacadeService {
   movieSuggestions$: Observable<string[]> = this.movieStore.pipe(
     select(selectMovieList),
-    map( (result: IMDBMovie[]) => result?.map(singleMovie => singleMovie.Title) ?? [] )
+    map( (result: Movie[]) => result?.map(singleMovie => singleMovie.title) ?? [] )
   );
 
   constructor(private movieStore: Store<AppState>) { }
