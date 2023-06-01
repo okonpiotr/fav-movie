@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { EMPTY, Observable, of, startWith, switchMap } from "rxjs";
 
@@ -8,6 +8,7 @@ export type ErrorDictionary = { [error: string] :string  }
   selector: 'sc-form-error-display',
   templateUrl: './form-error-display.component.html',
   styleUrls: ['./form-error-display.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormErrorDisplayComponent {
   @Input() errorsTab:  ErrorDictionary = {};

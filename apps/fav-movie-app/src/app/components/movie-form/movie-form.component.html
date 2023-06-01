@@ -1,21 +1,9 @@
 Please select your favourite movie!
-
-<pre>{{formGroup.value | json}}</pre>
-<pre>{{countriesOptions | json}}</pre>
-<pre>valid: {{formGroup.valid | json}}</pre>
-
-suggestions:
-<pre>{{movieSuggestion$|async}}</pre>
-
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   name: <input pInputText formControlName="name"/> <sc-form-error-display [control]="nameFormControl"></sc-form-error-display>
   username: <input pInputText formControlName="username"/>  <sc-form-error-display [control]="usernameFormControl"></sc-form-error-display>
   country: <p-dropdown [options]="countriesOptions"  formControlName="country"></p-dropdown> <sc-form-error-display [control]="countryFormControl"></sc-form-error-display>
   post code: <input pInputText formControlName="postCode"/>  <sc-form-error-display [control]="postCodeFormControl"></sc-form-error-display>
   favouriteMovie: <p-autoComplete [suggestions]="(movieSuggestion$|async) ?? []" #favouriteMovie  (completeMethod)="searchMovieTitle()" formControlName="favouriteMovie"></p-autoComplete> <sc-form-error-display [control]="formGroup.controls['favouriteMovie']"></sc-form-error-display>
-
-
-
-
   <p-button type="submit" icon="pi pi-check" label="Submit"></p-button>
 </form>

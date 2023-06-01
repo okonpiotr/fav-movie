@@ -1,12 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
-} from "@angular/forms";
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
@@ -17,6 +10,7 @@ import { Router } from "@angular/router";
   selector: 'movie-app-movie-form',
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieFormComponent implements OnInit{
   countriesOptions: SelectItem[] = enumToArray(Country);
