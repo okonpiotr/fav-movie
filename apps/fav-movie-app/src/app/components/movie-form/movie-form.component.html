@@ -1,30 +1,32 @@
 <h1>Please Select Your Favourite Movie</h1>
-
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
   <div class="form-item-container">
     <label for="name">Name</label>
-    <input pInputText id="name" formControlName="name"/>
-    <sc-form-error-display [control]="nameFormControl"></sc-form-error-display>
+    <input  [ngClass]="{
+        'ng-invalid': submitted && nameFormControl.invalid,
+        'ng-valid': submitted && nameFormControl.valid
+      }"pInputText id="name" formControlName="name"/>
+    <sc-form-error-display [control]="nameFormControl" [submitted]="submitted"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">
 
     <label for="username">Username</label>
     <input id="username" pInputText formControlName="username"/>
-    <sc-form-error-display [control]="usernameFormControl"></sc-form-error-display>
+    <sc-form-error-display [control]="usernameFormControl" [submitted]="submitted"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">
     <label for="country">Country</label>
     <p-dropdown id="country" [options]="countriesOptions" formControlName="country"></p-dropdown>
-    <sc-form-error-display [control]="countryFormControl"></sc-form-error-display>
+    <sc-form-error-display [control]="countryFormControl" [submitted]="submitted"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">
     <label for="post-code">Post code</label>
     <input id="post-code" pInputText formControlName="postCode"/>
-    <sc-form-error-display [control]="postCodeFormControl"></sc-form-error-display>
+    <sc-form-error-display [control]="postCodeFormControl" [submitted]="submitted"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">
@@ -32,7 +34,7 @@
     <p-autoComplete id="favourite-movie" [suggestions]="(movieSuggestion$|async) ?? []" #favouriteMovie
                     (completeMethod)="searchMovieTitle()"
                     formControlName="favouriteMovie"></p-autoComplete>
-    <sc-form-error-display [control]="formGroup.controls['favouriteMovie']"></sc-form-error-display>
+
   </div>
 
   <div class="submit-container">

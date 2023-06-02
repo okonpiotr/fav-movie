@@ -12,7 +12,9 @@ export type ErrorDictionary = { [error: string] :string  }
 })
 export class FormErrorDisplayComponent {
   @Input() errorsTab:  ErrorDictionary = {};
+  @Input() submitted = false;
   firstErrorCode$: Observable<any> = EMPTY;
+
 
   private _control?: FormControl;
 

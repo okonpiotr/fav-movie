@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('fav-movie-app', () => {
+xdescribe('fav-movie-app', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {

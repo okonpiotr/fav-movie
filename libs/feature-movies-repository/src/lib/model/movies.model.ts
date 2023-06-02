@@ -1,6 +1,6 @@
 export enum Country {
-  Ireland=  'IRELAND',
-  UK = 'UNITED_KINGDOM',
+  Ireland=  'Ireland',
+  UK = 'United Kingdom',
 }
 
 export interface UserMovies {
@@ -10,8 +10,6 @@ export interface UserMovies {
   postCode: string,
   favouriteMovie: string,
 }
-
-
 
 export interface Movie {
   title: string,

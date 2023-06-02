@@ -1,1 +1,3 @@
-<span *ngIf="firstErrorCode$ | async as firstError">{{firstError| errorToMessage : errorsTab}}</span>
+<ng-container *ngIf="submitted">
+  <span *ngIf="firstErrorCode$ | async as firstError">{{firstError| errorToMessage : errorsTab}}</span>
+</ng-container>

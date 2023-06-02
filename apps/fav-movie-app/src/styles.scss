@@ -3,3 +3,8 @@
 :root {
   --error-text: red;
 }
+
+
+::ng-deep {
+  .ng-invalid {border-color: none}
+}

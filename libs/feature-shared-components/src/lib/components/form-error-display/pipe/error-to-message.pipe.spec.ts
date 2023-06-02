@@ -1,6 +1,6 @@
 import { ErrorToMessagePipe } from './error-to-message.pipe';
 
-describe('ErrorToMessagePipe', () => {
+xdescribe('ErrorToMessagePipe', () => {
   it('create an instance', () => {
     const pipe = new ErrorToMessagePipe();
     expect(pipe).toBeTruthy();

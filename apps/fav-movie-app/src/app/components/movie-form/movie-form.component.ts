@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
 import { MoviesFacadeService } from "../../service/movies-facade.service";
 import { Router } from "@angular/router";
+import { MovieFormModel } from "../model/movie-form.model";
+import { MovieFormService } from "../../service/movie-form.service";
 
 @Component({
   selector: 'movie-app-movie-form',
@@ -30,8 +32,9 @@ export class MovieFormComponent implements OnInit{
   favouriteMovieFormControl = this.formGroup.get('favouriteMovie') as FormControl;
 
   movieSuggestion$ = this.moviesFacadeService.movieSuggestions$;
+  submitted = false;
 
-  constructor(private moviesFacadeService: MoviesFacadeService, private router: Router) {}
+  constructor(private moviesFacadeService: MoviesFacadeService, private router: Router, private angularFormService: MovieFormService) {}
 
   ngOnInit(): void {
     // this.countryFormControl.valueChanges.subscribe(()=> {
@@ -41,12 +44,15 @@ export class MovieFormComponent implements OnInit{
   }
 
   onSubmit(): void {
+    this.submitted = true;
     if (!this.formGroup.valid) {
       this.formGroup.markAsDirty();
       this.formGroup.markAsTouched();
       this.usernameFormControl.markAsDirty();
       return
     }
+
+    this.angularFormService.setMovieFormData(this.formGroup.value as MovieFormModel);
     this.router.navigate(['/thankyou']);
   }
 
