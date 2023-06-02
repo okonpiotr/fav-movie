@@ -15,7 +15,7 @@
         <div class="value">{{data.username}}</div>
       </div>
 
-      <div class="item-container" data-test-country>
+      <div *ngIf="data.country" class="item-container" data-test-country>
         <div class="title">Country:</div>
         <div class="value">{{data.country}}</div>
       </div>
@@ -36,6 +36,6 @@
   </ng-container>
 </ng-container>
 
-<ng-container *ngIf="!(formData$ | async)">
-  Something went wrong <a routerLink="enter">Back to the form</a>
+<ng-container *ngIf="!(formData$ | async)?.name">
+  <div data-test-fail-info>Something went wrong <a data-test-link-to-form routerLink="enter">Back to the form</a></div>
 </ng-container>
