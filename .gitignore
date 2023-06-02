@@ -39,4 +39,4 @@ testem.log
 Thumbs.db
 
 .angular
-libs/feature-movies-repository/src/lib/service/env.json
+#libs/feature-movies-repository/src/lib/service/env.json
