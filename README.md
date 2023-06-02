@@ -1,12 +1,17 @@
 # RoomexPiotrWorkspace
 
  
-## Running the project
+## setting up the project
 Please run `npm i` command to install required node packages
 
 
+## running project
+Please use command npm run start:fav-movie-app
 
-##t Tools versions:
+## running tests
+Please run command npm run test:fav-movie-app
+
+## Tools versions:
 Nx v16.2.2 
 Angular CLI: 16.0.3
 Node: 18.14.1

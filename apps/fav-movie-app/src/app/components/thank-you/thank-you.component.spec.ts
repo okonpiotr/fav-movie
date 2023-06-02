@@ -25,7 +25,7 @@ fdescribe('MovieFormComponent', () => {
   });
 
   describe('checks displaying of items ', () => {
-    it('should display all legends and items', () => {
+    it('should display all legends and values', () => {
       const data: MovieFormModel = {
         "name": "Piotr",
         "username": "my.test.email@gmail.com",
@@ -62,27 +62,6 @@ fdescribe('MovieFormComponent', () => {
       expect(page.favouriteMovieContainer.innerHTML).toContain(data.favouriteMovie);
     });
 
-
-    it('Data displaying check', () => {
-      const data: MovieFormModel = {
-        "name": "Piotr",
-        "country": Country.UK,
-        "postCode": "PO16 7GZ",
-        "favouriteMovie": "Batman Returns"
-      }
-      // Given
-      component.formData$ = of(data)
-
-      // When
-      fixture.detectChanges()
-
-      // Then
-      expect(page.nameContainer).toBeTruthy();
-      expect(page.usernameContainer).toBeFalsy();
-      expect(page.countryContainer).toBeTruthy();
-      expect(page.postCodeContainer).toBeTruthy();
-      expect(page.favouriteMovieContainer).toBeTruthy();
-    });
 
     it('should not display missing field username but present the rest', () => {
       const data: MovieFormModel = {
@@ -172,12 +151,13 @@ fdescribe('MovieFormComponent', () => {
   })
 
   describe('Invalid data checks ', () => {
-    it('lack of name field - incorrect Data', () => {
+    it('lack of name field - incorrect Data. Present failsafe info for the user', () => {
       const data: MovieFormModel = {
         "username": "my.test.email@gmail.com",
         "country": Country.UK,
         "postCode": "PO16 7GZ",
       } as MovieFormModel
+
       // Given
       component.formData$ = of(data)
 
@@ -199,8 +179,6 @@ fdescribe('MovieFormComponent', () => {
       expect(page.linkToForm).toBeTruthy();
       expect(page.linkToForm.innerHTML).toEqual('Back to the form');
       expect(page.linkToForm.getAttribute('routerLink')).toEqual('enter');
-
-
     });
   });
 

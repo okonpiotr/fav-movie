@@ -2,7 +2,10 @@
   "name": "@roomex-piotr-workspace/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:fav-movie-app": "nx serve fav-movie-app",
+    "test:fav-movie-app": "nx test fav-movie-app"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.0",
