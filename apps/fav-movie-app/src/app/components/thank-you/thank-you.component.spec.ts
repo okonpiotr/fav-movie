@@ -3,6 +3,7 @@ import { of } from "rxjs";
 import { ThankYouComponent } from "./thank-you.component";
 import { MovieFormModel } from "../model/movie-form.model";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
+import { ChangeDetectorRef } from "@angular/core";
 
 fdescribe('MovieFormComponent', () => {
   let component: ThankYouComponent;
@@ -12,6 +13,7 @@ fdescribe('MovieFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ThankYouComponent],
+      providers: [ChangeDetectorRef]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ThankYouComponent);
@@ -37,6 +39,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges()
 
       // Then
@@ -74,6 +77,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges()
 
       // Then
@@ -96,6 +100,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges()
 
       // Then
@@ -117,6 +122,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges()
 
       // Then
@@ -139,6 +145,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges()
 
       // Then
@@ -162,6 +169,7 @@ fdescribe('MovieFormComponent', () => {
       component.formData$ = of(data)
 
       // When
+      component.cdr.markForCheck();
       fixture.detectChanges();
 
       // Then

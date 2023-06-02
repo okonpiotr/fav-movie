@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MovieFormModel } from "../model/movie-form.model";
 import { Observable } from "rxjs";
 import { MovieFormService } from "../../service/movie-form.service";
@@ -12,8 +12,5 @@ import { MovieFormService } from "../../service/movie-form.service";
 export class ThankYouComponent {
   formData$: Observable<MovieFormModel | null> = this.movieFormService.movieFormData$;
 
-
-  constructor(private movieFormService: MovieFormService) {
-
-  }
+  constructor(private movieFormService: MovieFormService, public cdr: ChangeDetectorRef) {}
 }
