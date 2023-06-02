@@ -14,7 +14,7 @@
 
     <label for="username">Username</label>
     <input id="username" pInputText formControlName="username"/>
-    <sc-form-error-display [control]="usernameFormControl" [submitted]="submitted"></sc-form-error-display>
+    <sc-form-error-display [control]="usernameFormControl" [submitted]="submitted" [errorsTab]="{email: 'This field can be empty. Once filled an email is required' }"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">
@@ -26,7 +26,7 @@
   <div class="form-item-container">
     <label for="post-code">Post code</label>
     <input id="post-code" pInputText formControlName="postCode"/>
-    <sc-form-error-display [control]="postCodeFormControl" [submitted]="submitted"></sc-form-error-display>
+    <sc-form-error-display [control]="postCodeFormControl" [submitted]="submitted" [errorsTab]="{requiredForUK: 'Please enter post code', incorrectPostalCode: 'Please enter valid post code' }"></sc-form-error-display>
   </div>
 
   <div class="form-item-container">

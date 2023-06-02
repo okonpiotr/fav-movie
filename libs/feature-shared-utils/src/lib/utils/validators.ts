@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function lettersOnlyValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -10,4 +10,17 @@ export function lettersOnlyValidator(): ValidatorFn {
     // Return the validation result
     return isValid ? null : { lettersOnly: true };
   };
+}
+
+export function validateChildControls(inputControl: AbstractControl): void {
+  const formGroup = inputControl as FormGroup;
+  formGroup.markAsTouched();
+  formGroup.updateValueAndValidity()
+
+    Object.values(formGroup.controls).forEach((childControl: AbstractControl) => {
+      const control = childControl as FormControl;
+      control.updateValueAndValidity();
+      control.markAsDirty();
+      control.markAsTouched();
+    })
 }

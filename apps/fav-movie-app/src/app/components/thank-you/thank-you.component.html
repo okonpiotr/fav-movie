@@ -1,33 +1,41 @@
-<h1>Thank you very much!</h1>
+<ng-container *ngIf="formData$ | async as data">
+  <ng-container *ngIf="data.name">
+    <h1>Thank you very much!</h1>
 
-<div *ngIf="formData$ | async as data">
+    <div class="summary-container">
 
-  <div class="item-container">
-    <div class="title">Name</div>
-    <div class="value">{{data.name}}</div>
-  </div>
-
-
-  <div *ngIf="data.username" class="item-container">
-    <div class="title">username</div>
-    <div class="value">{{data.username}}</div>
-  </div>
-
-  <div class="item-container">
-    <div class="title">country</div>
-    <div class="value">{{data.country}}</div>
-  </div>
-
-  <div *ngIf="data.postCode" class="item-container">
-    <div class="title">country</div>
-    <div class="value">{{data.postCode}}</div>
-  </div>
+      <div class="item-container">
+        <div class="title">Name</div>
+        <div class="value">{{data.name}}</div>
+      </div>
 
 
-  <div *ngIf="data.favouriteMovie" class="item-container">
-    <div class="title">Favourite movie</div>
-    <div class="value">{{data.favouriteMovie}}</div>
-  </div>
+      <div *ngIf="data.username" class="item-container">
+        <div class="title">username</div>
+        <div class="value">{{data.username}}</div>
+      </div>
+
+      <div class="item-container">
+        <div class="title">country</div>
+        <div class="value">{{data.country}}</div>
+      </div>
+
+      <div *ngIf="data.postCode" class="item-container">
+        <div class="title">country</div>
+        <div class="value">{{data.postCode}}</div>
+      </div>
 
 
-</div>
+      <div *ngIf="data.favouriteMovie" class="item-container">
+        <div class="title">Favourite movie</div>
+        <div class="value">{{data.favouriteMovie}}</div>
+      </div>
+
+
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="!(formData$ | async)">
+  Something went wrong <a routerLink="enter">Back to the form</a>
+</ng-container>

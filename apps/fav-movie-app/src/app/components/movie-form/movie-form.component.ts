@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
-import { enumToArray, lettersOnlyValidator } from "@roomex-piotr-workspace/feature-shared-utils";
+import { enumToArray, lettersOnlyValidator, validateChildControls } from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
 import { MoviesFacadeService } from "../../service/movies-facade.service";
@@ -37,14 +37,18 @@ export class MovieFormComponent implements OnInit{
   constructor(private moviesFacadeService: MoviesFacadeService, private router: Router, private angularFormService: MovieFormService) {}
 
   ngOnInit(): void {
-    // this.countryFormControl.valueChanges.subscribe(()=> {
-    //   this.postCodeFormControl.updateValueAndValidity({emitEvent: true, onlySelf: false})
-    //   this.postCodeFormControl.markAsDirty();
-    // });
+    // doesn't need to unsubscribe. Garbage collector will destroy the subscription once control will be destroyed
+    this.countryFormControl.valueChanges.subscribe(()=> {
+      this.postCodeFormControl.updateValueAndValidity({emitEvent: true, onlySelf: false})
+      this.postCodeFormControl.markAsDirty();
+    });
   }
 
   onSubmit(): void {
     this.submitted = true;
+
+    validateChildControls(this.formGroup);
+
     if (!this.formGroup.valid) {
       this.formGroup.markAsDirty();
       this.formGroup.markAsTouched();
@@ -62,7 +66,7 @@ export class MovieFormComponent implements OnInit{
 
   private postalCodeValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      const postalCode = control.value.value;
+      const postalCode = control.value;
       if (this.countryFormControl?.value === Country.Ireland) {
         if (!postalCode?.trim()) {
           return null;
@@ -73,7 +77,7 @@ export class MovieFormComponent implements OnInit{
 
       if (this.countryFormControl?.value === Country.UK) {
         if (!postalCode?.trim()) {
-          return { required: true }
+          return { requiredForUK: true }
         }
         const isCorrect = isUKPostalCodeCorrect(postalCode);
         return isCorrect ? null : { incorrectPostalCode: true} ;

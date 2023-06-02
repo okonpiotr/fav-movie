@@ -41,7 +41,7 @@ export class FormErrorDisplayComponent {
 }
 
 function firstError(control?: FormControl): string | undefined {
-  if (!control?.errors || !control.dirty) {
+  if (!control?.errors) {
     return undefined;
   }
   const errors = control?.errors as Object;
