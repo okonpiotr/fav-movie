@@ -1,9 +1,9 @@
 <ng-container *ngIf="formData$ | async as data">
   <ng-container *ngIf="data.name">
 
-    <h1>Thank you very much!</h1>
+    <h1>Thank you very much for your time</h1>
 
-    <h2>Your choice summary:</h2>
+    <p>We shall get back to you with the best possible offer that fulfills your request: </p>
     <div class="summary-container">
       <div class="item-container" data-test-name>
         <div class="title">Name:</div>
@@ -31,6 +31,9 @@
         <div class="value">{{data.favouriteMovie}}</div>
       </div>
 
+      <div id="sign-container">
+        Roomex Team
+      </div>
 
     </div>
   </ng-container>

@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
-import { enumToArray, lettersOnlyValidator, validateChildControls } from "@roomex-piotr-workspace/feature-shared-utils";
+import {
+  enumToArray,
+  noNumbersValidator,
+  validateChildControls
+} from "@roomex-piotr-workspace/feature-shared-utils";
 import { Country } from "@roomex-piotr-workspace/feature-movies-repository";
 import { SelectItem } from "primeng/api";
 import { MoviesFacadeService } from "../../service/movies-facade.service";
@@ -18,7 +22,7 @@ export class MovieFormComponent implements OnInit{
   countriesOptions: SelectItem[] = enumToArray(Country);
   formGroup = new FormGroup(
     {
-      name: new FormControl('', [Validators.required, lettersOnlyValidator()]),
+      name: new FormControl('', [Validators.required, noNumbersValidator()]),
       username: new FormControl('', [Validators.email]),
       country: new FormControl(this.countriesOptions[0].value,[Validators.required] ),
       postCode: new FormControl('', [this.postalCodeValidator()]),

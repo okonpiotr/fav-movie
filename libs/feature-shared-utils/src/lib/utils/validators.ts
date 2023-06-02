@@ -24,3 +24,13 @@ export function validateChildControls(inputControl: AbstractControl): void {
       control.markAsTouched();
     })
 }
+
+export function noNumbersValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value: string = (control as FormControl).value;
+    const hasNumbers: boolean = /[0-9]/.test(value); // Check if the value contains any numbers
+
+    return hasNumbers ? { noNumbers: true } : null;
+  };
+}
+

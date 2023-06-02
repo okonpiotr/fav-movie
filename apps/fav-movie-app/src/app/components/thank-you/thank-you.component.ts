@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MovieFormModel } from "../model/movie-form.model";
 import { Observable } from "rxjs";
 import { MovieFormService } from "../../service/movie-form.service";
@@ -7,6 +7,7 @@ import { MovieFormService } from "../../service/movie-form.service";
   selector: 'movie-app-thank-you',
   templateUrl: './thank-you.component.html',
   styleUrls: ['./thank-you.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThankYouComponent {
   formData$: Observable<MovieFormModel | null> = this.movieFormService.movieFormData$;

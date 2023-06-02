@@ -3,10 +3,8 @@ import { select, Store } from "@ngrx/store";
 import { map, Observable } from "rxjs";
 import { AppState, loadMovies, selectMovieList } from "@roomex-piotr-workspace/feature-movies";
 
-//todo- change
 import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
 
-//todo not for root
 @Injectable()
 export class MoviesFacadeService {
   movieSuggestions$: Observable<string[]> = this.movieStore.pipe(

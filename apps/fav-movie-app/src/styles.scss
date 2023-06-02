@@ -1,15 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'normalize.css';
 
 :root {
-  --error-text: red;
-}
-
-
-::ng-deep {
-  .ng-invalid {border-color: none}
+  --error-text: #F24223;
 }
 
 a {
   color: rgba(0, 170, 168, 1);
   text-decoration: none;
+}
+
+h1, h2 {
+  color: #005a70;
+}
+
+body {
+  font-family: Arial;
+  font-size: 1rem;
+  color: #484848;
+  background-color: #fff;
+  margin: 0;
 }

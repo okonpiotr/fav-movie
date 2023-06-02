@@ -1,12 +1,9 @@
-<h1>Please Select Your Favourite Movie</h1>
+<h1>Please Leave the Contact Data and Select Your Favourite Movie</h1>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
   <div class="form-item-container">
     <label for="name">Name</label>
-    <input  [ngClass]="{
-        'ng-invalid': submitted && nameFormControl.invalid,
-        'ng-valid': submitted && nameFormControl.valid
-      }"pInputText id="name" formControlName="name"/>
+    <input pInputText id="name" formControlName="name"/>
     <sc-form-error-display [control]="nameFormControl" [submitted]="submitted"></sc-form-error-display>
   </div>
 

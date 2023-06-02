@@ -5,7 +5,8 @@ const texts: ErrorDictionary = {
   required: 'Please fill the field',
   email: 'Username musts be email format',
   incorrectPostalCode: 'Please enter valid postal code',
-  lettersOnly: 'Please enter only letters'
+  lettersOnly: 'Please enter only letters',
+  noNumbers: 'Numbers are not allowed'
 }
 
 @Pipe({
