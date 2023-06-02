@@ -11,7 +11,8 @@ import { MovieFormService } from "../../service/movie-form.service";
 export class ThankYouComponent {
   formData$: Observable<MovieFormModel | null> = this.movieFormService.movieFormData$;
 
-    constructor(private movieFormService: MovieFormService) {
 
-}
+  constructor(private movieFormService: MovieFormService) {
+
+  }
 }

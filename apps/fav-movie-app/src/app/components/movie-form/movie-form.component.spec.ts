@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MovieFormComponent } from './movie-form.component';
 
-xdescribe('MovieFormComponent', () => {
+describe('MovieFormComponent', () => {
   let component: MovieFormComponent;
   let fixture: ComponentFixture<MovieFormComponent>;
 

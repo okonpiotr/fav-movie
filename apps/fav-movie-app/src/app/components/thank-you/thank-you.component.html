@@ -1,33 +1,33 @@
 <ng-container *ngIf="formData$ | async as data">
   <ng-container *ngIf="data.name">
+
     <h1>Thank you very much!</h1>
 
+    <h2>Your choice summary:</h2>
     <div class="summary-container">
-
       <div class="item-container">
-        <div class="title">Name</div>
+        <div class="title">Name:</div>
         <div class="value">{{data.name}}</div>
       </div>
 
-
       <div *ngIf="data.username" class="item-container">
-        <div class="title">username</div>
+        <div class="title">Username:</div>
         <div class="value">{{data.username}}</div>
       </div>
 
       <div class="item-container">
-        <div class="title">country</div>
+        <div class="title">Country:</div>
         <div class="value">{{data.country}}</div>
       </div>
 
       <div *ngIf="data.postCode" class="item-container">
-        <div class="title">country</div>
+        <div class="title">Post code:</div>
         <div class="value">{{data.postCode}}</div>
       </div>
 
 
       <div *ngIf="data.favouriteMovie" class="item-container">
-        <div class="title">Favourite movie</div>
+        <div class="title">Favourite movie:</div>
         <div class="value">{{data.favouriteMovie}}</div>
       </div>
 
