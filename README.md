@@ -2,7 +2,7 @@
 
  
 ## setting up the project
-Please run `npm i` command to install required node packages and then please refer to file:
+Please run `npm i --legacy-peer-deps` command to install required node packages and then please refer to file:
 libs\feature-movies-repository\src\lib\service\env.json and fill the "movieListApiKey" field with API key
 
 
