@@ -1,27 +1,32 @@
 import { createReducer, on } from "@ngrx/store";
-import { addMovie, loadMoviesSuccess, replaceMovies } from "./action";
+import { loadMoviesSuccess } from "./action";
 import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 export interface MovieState {
-  movies: Movie[];
+  movies: { [key: string]: Movie[] };
+  currentSelection: Movie[]
+  currentKey?: string;
+
 }
 
-
 export const initialState: MovieState = {
-  movies: []
+  movies: {},
+  currentSelection: [],
+  currentKey: undefined
 }
 
 export const MovieReducer = createReducer(
   initialState,
 
-  on(replaceMovies, (state,  {movies} ) => {
-    return {...state, ...{movies}}
+  on(loadMoviesSuccess, (state, {key, movies}) => {
+    return expandStateByNewMoviesWithKey(state, movies, key)
   }),
-  on(loadMoviesSuccess, (state,  {movies} ) => {
-    return {...state, ...{movies}}
-  }),
-  on(addMovie, (state,  {movie} ) => {
-    return {...state, ...{movies: [...state.movies, movie]}}
-  })
 );
 
+function expandStateByNewMoviesWithKey(state: MovieState, moviesToAdd: Movie[], key: string): MovieState {
+  const stateCopy = {...state};
+  stateCopy.movies = {...stateCopy.movies, ...{[key]: moviesToAdd}}
+  stateCopy.currentSelection = [...moviesToAdd];
+  stateCopy.currentKey = key
+  return stateCopy;
+}
