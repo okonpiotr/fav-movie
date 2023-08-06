@@ -6,7 +6,7 @@ export const selectMovieFeature = createFeatureSelector<MovieState>(featureMovie
 
 export const selectMovieList = createSelector(
   selectMovieFeature,
-  (featureState) => featureState.movies['key-test']
+  (featureState: MovieState, key: string) => featureState.movies[key]
 );
 
 export const selectCurrentMoviesList = createSelector(

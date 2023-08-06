@@ -12,8 +12,8 @@ export class MovieEffects {
       ofType(loadMovies),
       mergeMap((action) =>
         this.movieService.getMoviesList(action.key).pipe(
-          map((movies) => loadMoviesSuccess({ key: action.key, movies })),
-          catchError((error) => of(loadMoviesFailure({ error })))
+          map((movies) => loadMoviesSuccess({key: action.key, movies})),
+          catchError((error) => of(loadMoviesFailure({error})))
         )
       )
     )
