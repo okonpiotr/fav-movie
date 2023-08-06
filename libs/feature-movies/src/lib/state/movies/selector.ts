@@ -4,7 +4,7 @@ import { featureMovie } from "./utils";
 
 export const selectMovieFeature = createFeatureSelector<MovieState>(featureMovie);
 
-export const selectMovieList = createSelector(
+export const selectMovieFromListBasedOnKey = createSelector(
   selectMovieFeature,
   (featureState: MovieState, key: string) => featureState.movies[key]
 );
@@ -13,3 +13,8 @@ export const selectCurrentMoviesList = createSelector(
   selectMovieFeature,
   (featureState) => featureState.currentSelection
 );
+
+export const selectFetchMovieListStatus = createSelector(
+  selectMovieFeature,
+  (featureState) => featureState.fetchStatus
+)

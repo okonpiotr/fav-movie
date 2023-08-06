@@ -19,6 +19,7 @@ import { MovieEffects } from "../../../../libs/feature-movies/src/lib/state/movi
 import { MovieReducer } from "@roomex-piotr-workspace/feature-movies";
 import { HttpClientModule } from "@angular/common/http";
 import { MoviesFacadeService } from "./service/movies-facade.service";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
@@ -34,13 +35,17 @@ import { MoviesFacadeService } from "./service/movies-facade.service";
     DropdownModule,
     AutoCompleteModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(appRoutes),
 
     EffectsModule.forRoot([MovieEffects]),
     StoreModule.forRoot(
       {
         featureMovie: MovieReducer,
-      })
+      }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      // logOnly: environment.production, // Restrict extension to log-only mode
+    }),
 
 
   ],

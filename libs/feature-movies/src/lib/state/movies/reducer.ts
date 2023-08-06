@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadMoviesSuccess } from "./action";
+import { setMovieFetchState, loadMoviesFailure, loadMoviesSuccess } from "./action";
 import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
 
 export enum FetchStatus {
@@ -29,6 +29,14 @@ export const MovieReducer = createReducer(
   on(loadMoviesSuccess, (state, {key, movies}) => {
     return expandStateByNewMoviesWithKey(state, movies, key)
   }),
+
+  on(loadMoviesFailure, (state) => {
+    return {...state, ...{fetchStatus: FetchStatus.error}};
+  }),
+
+  on(setMovieFetchState, (state, {fetchStatus}) => {
+    return {...state, ...{fetchStatus}};
+  })
 );
 
 function expandStateByNewMoviesWithKey(state: MovieState, moviesToAdd: Movie[], key: string): MovieState {

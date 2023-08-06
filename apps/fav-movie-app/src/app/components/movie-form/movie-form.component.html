@@ -30,7 +30,7 @@
     <label for="favourite-movie">Favourite movie</label>
     <p-autoComplete id="favourite-movie" [suggestions]="(movieSuggestion$|async) ?? []" #favouriteMovie
                     (completeMethod)="searchMovieTitle()"
-                    formControlName="favouriteMovie"></p-autoComplete>
+                    formControlName="favouriteMovie"></p-autoComplete> status: {{fetchStatus$ | async}}
 
   </div>
 

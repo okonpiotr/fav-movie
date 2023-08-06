@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 import {
   enumToArray,
@@ -36,6 +36,7 @@ export class MovieFormComponent implements OnInit{
   favouriteMovieFormControl = this.formGroup.get('favouriteMovie') as FormControl;
 
   movieSuggestion$ = this.moviesFacadeService.movieSuggestions$;
+  fetchStatus$ = this.moviesFacadeService.fetchStatus$;
   submitted = false;
 
   constructor(private moviesFacadeService: MoviesFacadeService, private router: Router, private angularFormService: MovieFormService) {}
