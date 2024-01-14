@@ -1,12 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
 import { setMovieFetchState, loadMoviesFailure, loadMoviesSuccess } from "./action";
 import { Movie } from "@roomex-piotr-workspace/feature-movies-repository";
+import * as AppState from  '../../../../../../../fav-movie/apps/fav-movie-app/src/app/state/state'
 
 export enum FetchStatus {
   none,
   progress,
   done,
   error
+}
+
+export interface State extends AppState.State {
+  featureMovie: MovieState
 }
 
 export interface MovieState {
@@ -23,18 +28,21 @@ export const initialState: MovieState = {
   fetchStatus: FetchStatus.none
 }
 
-export const MovieReducer = createReducer(
+export const MovieReducer = createReducer<MovieState>(
   initialState,
 
-  on(loadMoviesSuccess, (state, {key, movies}) => {
+  on(loadMoviesSuccess, (state: MovieState, {key, movies}): MovieState => {
+    console.log(state);
     return expandStateByNewMoviesWithKey(state, movies, key)
   }),
 
-  on(loadMoviesFailure, (state) => {
+  on(loadMoviesFailure, (state:MovieState): MovieState => {
+    console.log(state);
     return {...state, ...{fetchStatus: FetchStatus.error}};
   }),
 
-  on(setMovieFetchState, (state, {fetchStatus}) => {
+  on(setMovieFetchState, (state: MovieState, {fetchStatus}): MovieState=> {
+    console.log(state);
     return {...state, ...{fetchStatus}};
   })
 );

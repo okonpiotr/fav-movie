@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { select, Store } from "@ngrx/store";
 import { map, Observable } from "rxjs";
 import {
-  AppState,
+  State,
   FetchStatus,
   loadMovies,
   selectCurrentMoviesList,
@@ -22,7 +22,7 @@ export class MoviesFacadeService {
     select(selectFetchMovieListStatus)
   )
 
-  constructor(private movieStore: Store<AppState>) { }
+  constructor(private movieStore: Store<State>) { }
 
   loadData(key: string) {
     this.movieStore.dispatch( loadMovies( {key}));

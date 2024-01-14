@@ -16,10 +16,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { MovieEffects } from "../../../../libs/feature-movies/src/lib/state/movies/effect";
-import { MovieReducer } from "@roomex-piotr-workspace/feature-movies";
 import { HttpClientModule } from "@angular/common/http";
 import { MoviesFacadeService } from "./service/movies-facade.service";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { appReducer } from "./state/state";
 
 @NgModule({
   declarations: [AppComponent, MovieFormComponent, ThankYouComponent],
@@ -36,18 +36,11 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     AutoCompleteModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-
-    EffectsModule.forRoot([MovieEffects]),
-    StoreModule.forRoot(
-      {
-        featureMovie: MovieReducer,
-      }),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       // logOnly: environment.production, // Restrict extension to log-only mode
     }),
-
-
   ],
   providers: [MoviesFacadeService],
   bootstrap: [AppComponent],
